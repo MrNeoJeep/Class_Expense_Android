@@ -11,11 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.future.common.Constants;
-import com.future.student.RecordListActivity;
+import com.future.student.NavActivity;
 import com.future.student.UserInfo;
 import com.future.util.SharedPreferencesUtils;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import okhttp3.Headers;
@@ -80,7 +79,20 @@ public class MainActivity extends AppCompatActivity {
                             int code = jsonObject.getInt("code");
                             String msg = jsonObject.getString("msg");
                             String data = jsonObject.getString("data");
-                            JSONObject jsonObject1 = new JSONObject(data);
+                            JSONObject jsonObject1;
+                            if(code == 200){
+                                jsonObject1 = new JSONObject(data);
+                            }else{
+
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                return;
+                            }
+
                             //获取请求头信息
                             Headers headers = response.headers();
                             for(int i = 0;i < headers.size();i++) {
@@ -99,7 +111,12 @@ public class MainActivity extends AppCompatActivity {
                                     Log.i("userInfo classname",userInfo.getClassname());
                                     Log.i("userInfo role",userInfo.getRole()+"");
                                     Log.i("userInfo token",userInfo.getToken());
-                                    SharedPreferencesUtils.setParam(MainActivity.this,"userInfo",userInfo);
+
+                                    SharedPreferencesUtils.setParam(MainActivity.this,"id",userInfo.getId());
+                                    SharedPreferencesUtils.setParam(MainActivity.this,"username",userInfo.getUsername());
+                                    SharedPreferencesUtils.setParam(MainActivity.this,"classname",userInfo.getClassname());
+                                    SharedPreferencesUtils.setParam(MainActivity.this,"role",userInfo.getRole()+"");
+                                    SharedPreferencesUtils.setParam(MainActivity.this,"token",userInfo.getToken());
                                 }
                             }
 
@@ -109,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                                 public void run() {
                                     Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
                                     if(code == 200) {
-                                        Intent intent = new Intent(MainActivity.this, RecordListActivity.class);
+                                        Intent intent = new Intent(MainActivity.this, NavActivity.class);
                                         startActivity(intent);
                                     }
                                 }
