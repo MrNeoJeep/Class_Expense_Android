@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                             if(code == 200){
                                 jsonObject1 = new JSONObject(data);
                             }else{
-
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
