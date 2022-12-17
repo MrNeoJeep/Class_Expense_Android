@@ -36,7 +36,6 @@
             android:layout_margin="20dp"
             android:text="班费记录•注册"
             android:gravity="center"
-            android:textStyle="italic"
             android:textColor="#808080"
             android:textSize="30dp" />
 

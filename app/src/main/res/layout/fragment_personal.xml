@@ -5,114 +5,128 @@
     android:layout_height="match_parent"
     tools:context=".student.PersonalFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <!--个人信息-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/h_back"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/cardview_dark_background" />
-
-            <ImageView
-                android:id="@+id/h_front"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/avatar"
-                android:layout_centerInParent="true" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/h_back"
-                android:layout_marginBottom="20dp">
-
-                <ImageView
-                    android:id="@+id/user_line"
-                    android:layout_width="1dp"
-                    android:layout_height="25dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="15dp"
-                    android:background="@color/white" />
-
-                <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@id/user_line"
-                    android:text="用户名"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
-
-                <TextView
-                    android:id="@+id/role"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_toEndOf="@id/user_line"
-                    android:text="角色"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
-            </RelativeLayout>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
-        android:orientation="vertical">
-
-<!--        班级-->
-        <TextView
-            android:id="@+id/classname"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:text="   班级:计算机2012"
-            android:typeface="normal"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center_vertical|left"
-            android:background="@color/textBackGround"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--个人信息-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-<!--        版本号-->
-        <TextView
-            android:id="@+id/version"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:text="   版本号:v1.0.0"
-            android:typeface="normal"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center_vertical|left"
-            android:background="@color/textBackGround"
-            />
+                <ImageView
+                    android:id="@+id/h_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/cardview_dark_background" />
 
+                <ImageView
+                    android:id="@+id/h_front"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/avatar"
+                    android:layout_centerInParent="true" />
 
-<!--        退出登录按钮-->
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="250dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="50dp"
-            android:text="退出登录"
-            android:textStyle="normal"
-            android:textSize="35dp"
-            android:layout_gravity="center|center_horizontal"
-            android:background="@drawable/button"
-            />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/h_back"
+                    android:layout_marginBottom="20dp">
 
+                    <ImageView
+                        android:id="@+id/user_line"
+                        android:layout_width="1dp"
+                        android:layout_height="25dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="15dp"
+                        android:background="@color/white" />
 
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@id/user_line"
+                        android:text="用户名"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/role"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@id/user_line"
+                        android:text="角色"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <!--        班级-->
+            <TextView
+                android:id="@+id/classname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:text="   班级:计算机2012"
+                android:typeface="normal"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:gravity="center_vertical|left"
+                android:background="@color/textBackGround"
+                />
+            <!--        班费-->
+            <TextView
+                android:id="@+id/classexpense"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:text="   班费:0元"
+                android:typeface="normal"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:gravity="center_vertical|left"
+                android:background="@color/textBackGround"
+                />
 
+            <!--        版本号-->
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:text="   版本号:v1.0.0"
+                android:typeface="normal"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:gravity="center_vertical|left"
+                android:background="@color/textBackGround"
+                />
+
+            <Button
+                android:id="@+id/update_expense"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="修改班费"/>
+            <!--        退出登录按钮-->
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="250dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="50dp"
+                android:text="退出登录"
+                android:textStyle="normal"
+                android:textSize="35dp"
+                android:layout_gravity="center|center_horizontal"
+                android:background="@drawable/button"
+                />
+        </LinearLayout>
+
+    </ScrollView>
 </FrameLayout>

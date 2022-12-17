@@ -28,7 +28,6 @@
             android:layout_margin="25dp"
             android:text="班费记录•登录"
             android:gravity="center"
-            android:textStyle="italic"
             android:textColor="#808080"
             android:textSize="30dp" />
 

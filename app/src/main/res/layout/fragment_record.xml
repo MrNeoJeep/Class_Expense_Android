@@ -3,12 +3,158 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg"
     tools:context=".student.RecordFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:orientation="vertical">
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="日期" />
+            <Button
+                android:id="@+id/record_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选择日期"/>
+            <TextView
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="金额"/>
+            <EditText
+                android:id="@+id/record_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入金额"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/photo_text"
+                    style="?android:listSeparatorTextViewStyle"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginStart="32dp"
+
+                    android:gravity="center"
+                    android:text="实物照片"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/receipt_text"
+                    style="?android:listSeparatorTextViewStyle"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:text="小票"
+                    android:layout_marginStart="30dp"
+                    app:layout_constraintStart_toEndOf="@id/photo_text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="217dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+                <ImageView
+                    android:id="@+id/photo_img"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintStart_toStartOf="@id/photo_text"
+                    app:layout_constraintTop_toBottomOf="@id/photo_text"
+                    android:src="@mipmap/ic_launcher" />
+                <ImageView
+                    android:id="@+id/receipt_img"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    app:layout_constraintStart_toStartOf="@id/receipt_text"
+                    app:layout_constraintTop_toBottomOf="@id/receipt_text"
+                    android:src="@mipmap/ic_launcher" />
+                <ImageButton
+                    android:id="@+id/take_photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintStart_toStartOf="@id/photo_img"
+                    app:layout_constraintTop_toBottomOf="@id/photo_img"
+                    android:src="@drawable/ic_baseline_add_a_photo_24"/>
+                <ImageButton
+                    android:id="@+id/take_receipt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintStart_toStartOf="@id/receipt_img"
+                    app:layout_constraintTop_toBottomOf="@id/receipt_img"
+                    android:src="@drawable/ic_baseline_add_a_photo_24"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/check_text"
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="实物验收人"/>
+            <EditText
+                android:id="@+id/check_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入实物验收人姓名"/>
+
+            <TextView
+                android:id="@+id/state_text"
+                style="?android:listSeparatorTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="状态" />
+            <EditText
+                android:id="@+id/state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="问题未关闭"
+                android:hint="是否关闭此问题"/>
+
+            <Button
+                android:id="@+id/add_record"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="新增"/>
+            <Button
+                android:id="@+id/update_record"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:text="修改"/>
+
+            <Button
+                android:id="@+id/question_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="质疑"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/question_recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </FrameLayout>

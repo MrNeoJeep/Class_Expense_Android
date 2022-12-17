@@ -3,9 +3,11 @@ package com.future.student;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.future.R;
+import com.future.util.LocalDateTimeUtil;
+import com.future.util.SharedPreferencesUtils;
 
 import java.awt.font.TextAttribute;
 import java.util.ArrayList;
@@ -41,6 +45,8 @@ public class RecordListFragment extends Fragment {
     private List<Record> records;
 
     private Button addBtn;
+
+    private String role;
 
 
 
@@ -73,11 +79,16 @@ public class RecordListFragment extends Fragment {
         mRecordRecyclerView = view.findViewById(R.id.record_recycle_view);
         mRecordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         addBtn = view.findViewById(R.id.add_button);
+
+        role = (String) SharedPreferencesUtils.getParam(getContext(), "role", "");
+        if(role.equals("3")){
+            addBtn.setVisibility(View.GONE);
+        }
         //初始化数据
         //todo 向后端请求record数据
         //records = new ArrayList<>();
         mRecordLab = RecordLab.get(getActivity());
-        mRecordAdapter = new RecordAdapter(mRecordLab.getRecords());
+        mRecordAdapter = new RecordAdapter(mRecordLab.getRecords(getActivity()));
         mRecordRecyclerView.setAdapter(mRecordAdapter);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +110,7 @@ public class RecordListFragment extends Fragment {
     @SuppressLint("NotifyDataSetChanged")
     private void updateUI(){
         RecordLab recordLab = RecordLab.get(getActivity());
-        List<Record> records = recordLab.getRecords();
+        List<Record> records = recordLab.getRecords(getActivity());
         if(mRecordAdapter == null){
             mRecordAdapter = new RecordAdapter(records);
             mRecordRecyclerView.setAdapter(mRecordAdapter);
@@ -124,7 +135,9 @@ public class RecordListFragment extends Fragment {
             recordName = itemView.findViewById(R.id.list_record_name);
             recordTime = itemView.findViewById(R.id.list_record_time);
             editBtn = itemView.findViewById(R.id.list_item_edit);
-
+            if(role.equals("3")){
+                editBtn.setVisibility(View.GONE);
+            }
             editBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -145,11 +158,12 @@ public class RecordListFragment extends Fragment {
 
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         public void bind(Record record){
             this.mRecord = record;
             photo.setImageResource(R.drawable.ic_launcher_background);
             recordName.setText(mRecord.getRecordName());
-            recordTime.setText(mRecord.getRecordDate().toString());
+            recordTime.setText(LocalDateTimeUtil.LoaclDateTimeToStr(mRecord.getRecordDate()));
         }
 
     }
@@ -167,6 +181,7 @@ public class RecordListFragment extends Fragment {
             return new RecordHolder(inflater,parent);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public void onBindViewHolder(@NonNull RecordHolder holder, int position) {
             Record record = mRecords.get(position);
