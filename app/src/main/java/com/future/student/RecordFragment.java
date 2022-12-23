@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.future.R;
+import com.future.util.SharedPreferencesUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +44,8 @@ public class RecordFragment extends Fragment {
     private Button updateRecordBtn;
     private Button questionBtn;
     private RecyclerView questionRecyclerView;
+
+    private String role;
 
     public RecordFragment() {
         // Required empty public constructor
@@ -82,7 +85,41 @@ public class RecordFragment extends Fragment {
         updateRecordBtn = view.findViewById(R.id.update_record);
         questionBtn = view.findViewById(R.id.question_btn);
 
+        role = (String) SharedPreferencesUtils.getParam(getContext(), "role", "");
+        if(mRecordName == null) {
+            updateRecordBtn.setVisibility(View.GONE);
+        }
+        //如果是学生，则只有查看的权限和质疑的权限
+        if(role.equals("3")) {
+            updateRecordBtn.setVisibility(View.GONE);
+            addRecordBtn.setVisibility(View.GONE);
+            recordDateBtn.setEnabled(false);
+            recordMoneyText.setEnabled(false);
+            photoImg.setEnabled(false);
+            receiptImg.setEnabled(false);
+            takePhotoBtn.setEnabled(false);
+            takeReceiptBtn.setEnabled(false);
+            checkEditText.setEnabled(false);
+            state.setEnabled(false);
 
+
+        }
+
+        //todo 添加记录功能
+        addRecordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        //todo 修改记录/更新记录
+        updateRecordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         return view;
     }
 }
