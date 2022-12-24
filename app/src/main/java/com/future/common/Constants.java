@@ -5,4 +5,6 @@ public class Constants {
 
     public static final String NETERR = "网络连接错误";
 
+    public static final String RECORDNAME = "请先填写记录名";
+
 }
