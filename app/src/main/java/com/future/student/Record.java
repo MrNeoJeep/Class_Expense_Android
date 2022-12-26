@@ -121,10 +121,10 @@ public class Record {
     }
 
     public String getPhotoFileName() {
-        return "IMG_"+ getPhotos() +"_" + getId().toString() + ".jpg";
+        return "IMG_PHOTOS_" + getId().toString() + ".jpg";
     }
 
     public String getReceiptFileName() {
-        return "IMG_" + getReceipt() +"_" + getId().toString() + ".jpg";
+        return "IMG_RECEIPT_" + getId().toString() + ".jpg";
     }
 }

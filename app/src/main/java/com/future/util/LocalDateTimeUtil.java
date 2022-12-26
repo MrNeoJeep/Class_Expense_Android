@@ -83,6 +83,21 @@ public class LocalDateTimeUtil {
         }
         return res;
     }
+    public static String strRemoveT(String str) {
+
+        String res = "";
+        for(int i = 0;i < str.length();i++) {
+            if(str.charAt(i) == 'T'){
+                res += ' ';
+            }else {
+                res += str.charAt(i);
+            }
+        }
+        if(str.substring(str.length() - 5).equals("00:00")){
+            res += ":00";
+        }
+        return res;
+    }
 
     public static String getDate() {
         Date date =new Date();

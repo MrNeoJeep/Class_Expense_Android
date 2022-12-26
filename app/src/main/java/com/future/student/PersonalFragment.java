@@ -67,7 +67,6 @@ public class PersonalFragment extends Fragment {
             mName = getArguments().getString(ARG_NAME);
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -105,6 +104,7 @@ public class PersonalFragment extends Fragment {
                     Log.i("expense",expense+"");
                 }catch (Exception e){
                     e.printStackTrace();
+
                     Toast.makeText(getActivity(),Constants.NETERR,Toast.LENGTH_SHORT).show();
                 }
             }

@@ -15,10 +15,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import okhttp3.FormBody;
@@ -31,10 +34,13 @@ import okhttp3.Response;
 public class RecordLab {
 
     private static RecordLab sRecordLab;
+    private Context mContext;
 
     private List<Record> mRecords;
+//    static boolean flag = true;
 
     public RecordLab(Context context) {
+        mContext = context.getApplicationContext();
         List<Record> records = new ArrayList<>();
         new Thread(new Runnable() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -142,6 +148,22 @@ public class RecordLab {
         return null;
     }
 
+//    public Boolean check(String username) {
+//
+//        flag = true;
+//
+//        return flag;
+//    }
+
+    public File getPhotoFile(Record record) {
+        File fileDir = mContext.getFilesDir();
+        return new File(fileDir,record.getPhotoFileName());
+    }
+
+    public File getReceiptFile(Record record) {
+        File fileDir = mContext.getFilesDir();
+        return new File(fileDir,record.getReceiptFileName());
+    }
 
 
 }

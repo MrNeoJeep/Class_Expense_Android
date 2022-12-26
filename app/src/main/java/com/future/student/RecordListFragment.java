@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.future.R;
+import com.future.util.AvatarUtil;
 import com.future.util.LocalDateTimeUtil;
 import com.future.util.SharedPreferencesUtils;
 
@@ -75,7 +76,21 @@ public class RecordListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_record_list, container, false);
+        //        view = inflater.inflate(getlayoutId(), null);
+        //        return view;
+        //避免切换Fragment 的时候重绘UI 。失去数据
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_record_list, null);
+        }
+        // 缓存的viewiew需要判断是否已经被加过parent，
+        // 如果有parent需要从parent删除，要不然会发生这个view已经有parent的错误。
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
+
         mRecordRecyclerView = view.findViewById(R.id.record_recycle_view);
         mRecordRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         addBtn = view.findViewById(R.id.add_button);
@@ -135,16 +150,7 @@ public class RecordListFragment extends Fragment {
             recordName = itemView.findViewById(R.id.list_record_name);
             recordTime = itemView.findViewById(R.id.list_record_time);
             editBtn = itemView.findViewById(R.id.list_item_edit);
-            if(role.equals("3")){
-                editBtn.setVisibility(View.GONE);
-            }
-            editBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //todo 修改跳转至RecordEditActivity
-
-                }
-            });
+            editBtn.setVisibility(View.GONE);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -161,7 +167,7 @@ public class RecordListFragment extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void bind(Record record){
             this.mRecord = record;
-            photo.setImageResource(R.drawable.ic_launcher_background);
+            photo.setImageBitmap(AvatarUtil.getAvatar(RecordLab.get(getActivity()).getPhotoFile(record)));
             recordName.setText(mRecord.getRecordName());
             recordTime.setText(LocalDateTimeUtil.LoaclDateTimeToStr(mRecord.getRecordDate()));
         }
