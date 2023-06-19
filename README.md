@@ -34,13 +34,18 @@ Android前端框架主要采用切片的思想，本软件在登录后进入主�
 
 ## UI界面
 - 登录
+
 ![image](https://github.com/MrNeoJeep/Class_Expense_Android/assets/76543465/9428b7c4-d4ff-4c57-b14f-8255ca96fa26)
 - 注册
+
 ![image](https://github.com/MrNeoJeep/Class_Expense_Android/assets/76543465/477fe6fc-54ff-4d94-a2f8-0a731a3b44cf)
+
 - 个人中心模块
+
 ![image](https://github.com/MrNeoJeep/Class_Expense_Android/assets/76543465/c6f2c764-8000-4323-9a50-b5e3fc52bb84)
 
 - 班费记录模块
+
 ![image](https://github.com/MrNeoJeep/Class_Expense_Android/assets/76543465/620e4886-9acc-4fe7-b6e1-9b77c1395107)
 ![image](https://github.com/MrNeoJeep/Class_Expense_Android/assets/76543465/346e7d84-ae7c-4b46-aade-03e1b23c21e1)
 ![image](https://github.com/MrNeoJeep/Class_Expense_Android/assets/76543465/7490f517-b231-45aa-adf7-1f5025aa58dc)
