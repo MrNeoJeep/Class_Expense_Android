@@ -1,5 +1,6 @@
 # Class_Expense_Android 班费记录程序安卓前端
-# Class_Expense_Backend 班费记录程序后端
+
+Class_Expense_Backend 班费记录程序后端地址：https://github.com/MrNeoJeep/Class_Expense_Backend
 
 
 > 任务描述：开发一个班费日常使用记录的APP，记账员记录班费的收支情况，每笔支出需要包含日期、金额、购买的实物照片、购物小票（如果有）、实物的验收人。<br>
